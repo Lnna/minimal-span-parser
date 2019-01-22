@@ -10,6 +10,16 @@
 * parser改动
   * 解析得到中间结果：parser.py
   
+* 生成结果展示-test:evalb-result 
+  * gold.txt    : 测试集实际句法结果
+  * predict.txt : 预测结果
+  * output.txt  : precision-recall-f1 计算详细结果
+  
+(S (IP (NP-SBJ (NP-PN (NR 中国)) (NP (NN 政府))) (VP (VP (VV 鼓励) (NP-OBJ (-NONE- *RNR*-1)) (QP-EXT (-NONE- *RNR*-2))) (CC 和) (VP (VV 支持) (NP-OBJ-1 (NP-PN (NR 中国)) (NP (NN 企业界))) (IP-2 (NP-SBJ (-NONE- *PRO*)) (VP (PP-LOC (P 在) (LCP (NP (CP-APP (IP (NP-SBJ (-NONE- *PRO*)) (VP (VCD (VA 平等) (VV 互利)))) (DEC 的)) (NP (NN 基础))) (LC 上))) (VP (VV 参与) (NP-OBJ (DNP (NP-PN (NR 吉尔吉斯)) (DEG 的)) (NP (NN 经济) (NN 建设)))))))) (PU 。) (PU ”)))
+(S (IP (NP-SBJ (NP-PN (NR 中国)) (NP (NN 政府))) (VP (VP (VV 鼓励) (NP-OBJ (-NONE- *RNR*-1)) (QP-EXT (-NONE- *RNR*-2))) (CC 和) (VP (VV 支持) (NP-OBJ-1 (NP-PN (NR 中国)) (NP (NN 企业界))) (IP-2 (NP-SBJ (-NONE- *PRO*)) (VP (PP-LOC (P 在) (LCP (NP (CP-APP (IP (NP-SBJ (-NONE- *PRO*)) (VP (VCD (VA 平等) (VV 互利)))) (DEC 的)) (NP (NN 基础))) (LC 上))) (VP (VV 参与) (NP-OBJ (DNP (NP-PN (NR 吉尔吉斯)) (DEG 的)) (NP (NN 经济) (NN 建设)))))))) (PU 。) (PU ”)))
+
+(S (IP (NP-SBJ (PU “) (NP (NP (NP-PN (NR 中) (NR 美)) (NP (NN 合作))) (NP     (ADJP (JJ 高)) (NP (NN 科技))) (NP (NN 项目))) (NP (NN 签字) (NN 仪式)) (PU ”)) (VP (NP-TMP (NT 今天)) (PP-LOC (P 在) (NP-PN (NR 上海))) (VP (VV 举行))) (PU 。)))
+(S (IP (NP-SBJ (PU “) (NP     (NP-PN (NR 中) (NR 美)) (NP (NN 合作))) (NP (NP (ADJP (JJ 高)) (NP (NN 科技))) (NP (NN 项目))) (NP (NN 签字) (NN 仪式)) (PU ”)) (VP (NP-TMP (NT 今天)) (PP-LOC (P 在) (NP-PN (NR 上海))) (VP (VV 举行))) (PU 。)))
 
 # Minimal Span-Based Neural Constituency Parser
 

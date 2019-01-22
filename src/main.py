@@ -293,7 +293,7 @@ def main():
         subparser.add_argument(arg)
     subparser.add_argument("--model-path-base", required=True)
     subparser.add_argument("--evalb-dir", default="../EVALB/")
-    subparser.add_argument("--test-path", default="../data/ctb_origin/ctb.5000test.clean")
+    subparser.add_argument("--test-path", default="../data/ctb_origin/ctb.test.clean")
     # subparser.add_argument("--test-path", default="../data/23.auto.clean")
 
     args = parser.parse_args()
