@@ -3,7 +3,6 @@ import os.path
 import re
 import subprocess
 import tempfile
-
 import trees
 
 class FScore(object):

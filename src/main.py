@@ -36,6 +36,8 @@ def run_train(args):
 
     print("Processing trees for training...")
     train_parse = [tree.convert() for tree in train_treebank]
+    #add by Ina
+    dev_parse = [tree.convert() for tree in dev_treebank]
 
     print("Constructing vocabularies...")
 
@@ -61,6 +63,18 @@ def run_train(args):
             else:
                 tag_vocab.index(node.tag)
                 word_vocab.index(node.word)
+
+    # add by Ina
+    # for tree in dev_parse:
+    #     nodes = [tree]
+    #     while nodes:
+    #         node = nodes.pop()
+    #         if isinstance(node, trees.InternalParseNode):
+    #             label_vocab.index(node.label)
+    #             nodes.extend(reversed(node.children))
+    #         else:
+    #             tag_vocab.index(node.tag)
+    #             word_vocab.index(node.word)
 
     tag_vocab.freeze()
     word_vocab.freeze()
@@ -261,11 +275,15 @@ def main():
     subparser.add_argument("--dropout", type=float, default=0.4)
     subparser.add_argument("--explore", action="store_true")
     subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--evalb-dir", default="EVALB/")
-    subparser.add_argument("--train-path", default="data/02-21.10way.clean")
-    subparser.add_argument("--dev-path", default="data/22.auto.clean")
-    subparser.add_argument("--batch-size", type=int, default=10)
-    subparser.add_argument("--epochs", type=int)
+    subparser.add_argument("--evalb-dir", default="../EVALB/")
+    # subparser.add_argument("--train-path", default="../data/02-21.10way.clean")
+    # subparser.add_argument("--dev-path", default="../data/22.auto.clean")
+    subparser.add_argument("--train-path", default="../data/ctb_origin/ctb.train.clean")
+    subparser.add_argument("--dev-path", default="../data/ctb_origin/ctb.dev.clean")
+    # subparser.add_argument("--train-path", default="../data/ctb_boson/ctb.train.clean")
+    # subparser.add_argument("--dev-path", default="../data/ctb_boson/ctb.dev.clean")
+    subparser.add_argument("--batch-size", type=int, default=2)
+    subparser.add_argument("--epochs", type=int,default=10)
     subparser.add_argument("--checks-per-epoch", type=int, default=4)
     subparser.add_argument("--print-vocabs", action="store_true")
 
@@ -274,8 +292,9 @@ def main():
     for arg in dynet_args:
         subparser.add_argument(arg)
     subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--evalb-dir", default="EVALB/")
-    subparser.add_argument("--test-path", default="data/23.auto.clean")
+    subparser.add_argument("--evalb-dir", default="../EVALB/")
+    subparser.add_argument("--test-path", default="../data/ctb_origin/ctb.5000test.clean")
+    # subparser.add_argument("--test-path", default="../data/23.auto.clean")
 
     args = parser.parse_args()
     args.callback(args)

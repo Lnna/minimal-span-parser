@@ -129,9 +129,13 @@ class LeafParseNode(ParseNode):
         return LeafTreebankNode(self.tag, self.word)
 
 def load_trees(path, strip_top=True):
+    tokens=[]
     with open(path) as infile:
+        # a=infile.read().replace("(", " ( ").replace(")", " ) ").split()
         tokens = infile.read().replace("(", " ( ").replace(")", " ) ").split()
+        # print('hahahah')
 
+    # print(tokens[-150:])
     def helper(index):
         trees = []
 
@@ -169,3 +173,6 @@ def load_trees(path, strip_top=True):
                 trees[i] = tree.children[0]
 
     return trees
+
+# load_trees('/home/lnn/Downloads/minimal-span-parser-master/data/22.auto.clean')
+# load_trees('/home/lnn/Downloads/minimal-span-parser-master/data/ctb_origin/ctb.test.clean')

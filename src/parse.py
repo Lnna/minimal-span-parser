@@ -99,6 +99,28 @@ class TopDownParser(object):
     def from_spec(cls, spec, model):
         return cls(model, **spec)
 
+    def parts_parse(self, sentence, gold=None):
+        is_train = gold is not None
+
+        if is_train:
+            self.lstm.set_dropout(self.dropout)
+        else:
+            self.lstm.disable_dropout()
+
+        embeddings = []
+        for tag, word in [(START, START)] + sentence + [(STOP, STOP)]:
+            tag_embedding = self.tag_embeddings[self.tag_vocab.index(tag)]
+
+            if word not in (START, STOP):
+                count = self.word_vocab.count(word)
+                if not count or (is_train and np.random.rand() < 1 / (1 + count)):
+                    word = UNK
+            word_embedding = self.word_embeddings[self.word_vocab.index(word)]
+            embeddings.append(dy.concatenate([tag_embedding, word_embedding]))
+
+        lstm_outputs = self.lstm.transduce(embeddings)
+        return lstm_outputs
+
     def parse(self, sentence, gold=None, explore=True):
         is_train = gold is not None
 

@@ -1,3 +1,16 @@
+# updated by Ina Liu
+
+* 数据处理
+  * ctb文件转化成模型所需数据格式：cfg_data.py
+  * 对新文本按照stanford和boson生成分词、词性标注文本：seg_pos.py boson.py
+  * 中间结果lstm_out 输出：parser_lstm.py
+  * 完整句法树输出：cp_out.py
+  * 检查测试样本是否与训练样本有重复：check_test_data.py
+  
+* parser改动
+  * 解析得到中间结果：parser.py
+  
+
 # Minimal Span-Based Neural Constituency Parser
 
 This is a reference Python implementation of the top-down and chart-based constituency parsers described in [A Minimal Span-Based Neural Constituency Parser](https://arxiv.org/abs/1705.03919) from ACL 2017.
