@@ -1,3 +1,8 @@
+# private
+private/
+models/
+data/
+eigen/
 # PyCharm directories
 .idea/
 
